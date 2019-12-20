@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aboutItemConstraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/aboutItemImageView"
+        android:layout_width="@dimen/activity_call_to_action_text_size"
+        android:layout_height="@dimen/activity_call_to_action_text_size"
+        android:layout_marginStart="@dimen/widgets_margin"
+        android:tint="@color/colorTextOnWhite"
+        app:layout_constraintBottom_toBottomOf="@+id/aboutItemTextView"
+        app:layout_constraintEnd_toStartOf="@+id/aboutItemTextView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/aboutItemTextView"
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/ic_about" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/aboutItemTextView"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/widgets_margin"
+        android:layout_marginTop="@dimen/widgets_margin"
+        android:layout_marginEnd="@dimen/widgets_margin"
+        android:layout_marginBottom="@dimen/widgets_margin"
+        android:fontFamily="@font/cmunbsr"
+        android:textColor="@color/colorTextOnWhite"
+        android:textSize="@dimen/activity_subtitle_text_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/aboutItemUrlImageView"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/aboutItemImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Lorem ipsum dolor." />
+
+    <ImageView
+        android:id="@+id/aboutItemUrlImageView"
+        android:layout_width="@dimen/extras_text_size"
+        android:layout_height="@dimen/extras_text_size"
+        android:layout_marginEnd="@dimen/widgets_margin"
+        android:alpha="0.75"
+        android:src="@drawable/ic_open_url"
+        android:tint="@color/colorTextOnWhiteSecondary"
+        app:layout_constraintBottom_toBottomOf="@+id/aboutItemTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/aboutItemTextView"
+        app:layout_constraintTop_toTopOf="@+id/aboutItemTextView"
+        tools:ignore="ContentDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="eu.morningbird.storytellingengine.viewmodel.AboutViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/black"
+        tools:context="eu.morningbird.storytellingengine.view.AboutActivity">
+
+        <ImageView
+            android:id="@+id/titleScreenBackgroundImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_titlescreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="@dimen/logo_dimensions"
+            android:layout_height="@dimen/logo_dimensions"
+            android:layout_marginStart="@dimen/widgets_margin"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:layout_marginEnd="@dimen/widgets_margin"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="@dimen/logo_max_dimensions"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintWidth_max="@dimen/logo_max_dimensions"
+            tools:ignore="ContentDescription" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:background="@drawable/bg_activity_card"
+            android:elevation="@dimen/widgets_elevation"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="@dimen/widgets_wide_margin"
+            android:requiresFadingEdge="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="@dimen/widgets_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImageView"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/headerTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/about"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_title_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/headerSeparator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/headerSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/descriptionTextView"/>
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/descriptionTextView"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/about_description"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/descriptionSeparator" />
+
+                <View
+                    android:id="@+id/descriptionSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/gameInfoTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/gameInfoTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="Game"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/versionItemConstraintLayout" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/versionItemConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gameInfoTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/gameInfoRecyclerView">
+
+                    <ImageView
+                        android:id="@+id/versionItemImageView"
+                        android:layout_width="@dimen/activity_call_to_action_text_size"
+                        android:layout_height="@dimen/activity_call_to_action_text_size"
+                        android:layout_marginStart="@dimen/widgets_margin"
+                        android:tint="@color/colorTextOnWhite"
+                        android:src="@drawable/ic_version"
+                        app:layout_constraintBottom_toBottomOf="@+id/versionItemTextView"
+                        app:layout_constraintEnd_toEndOf="@+id/versionItemTextView"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/versionItemTextView"
+                        tools:ignore="ContentDescription" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/versionItemTextView"
+                        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/widgets_margin"
+                        android:layout_marginTop="@dimen/widgets_margin"
+                        android:layout_marginEnd="@dimen/widgets_margin"
+                        android:layout_marginBottom="@dimen/widgets_margin"
+                        android:fontFamily="@font/cmunbsr"
+                        android:textColor="@color/colorTextOnWhite"
+                        android:textSize="@dimen/activity_subtitle_text_size"
+                        android:text="@{@string/about_version(viewModel.version)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/versionItemImageView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Version 1.0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/gameInfoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/versionItemConstraintLayout"
+                    app:layout_constraintBottom_toTopOf="@+id/gameInfoSeparator"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_about" />
+
+                <View
+                    android:id="@+id/gameInfoSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gameInfoRecyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/developerInfoTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/developerInfoTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="Developer info &amp; contact"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/gameInfoSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/developerInfoRecyclerView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/developerInfoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/developerInfoTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/developerInfoSeparator"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_about" />
+
+                <View
+                    android:id="@+id/developerInfoSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/developerInfoRecyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/supportInfoTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/supportInfoTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="Support"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/developerInfoSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/supportInfoRecyclerView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/supportInfoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/supportInfoTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/supportInfoSeparator"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_about" />
+
+                <View
+                    android:id="@+id/supportInfoSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/supportInfoRecyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/legalInfoTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/legalInfoTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="Legal"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/supportInfoSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/legalInfoRecyclerView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/legalInfoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/legalInfoTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/legalInfoSeparator"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_about" />
+
+                <View
+                    android:id="@+id/legalInfoSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/legalInfoRecyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/engineInfoTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/engineInfoTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="Engine"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/legalInfoSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/engineDescriptionTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/engineDescriptionTextView"
+                    style="@style/TextAppearance.MaterialComponents.Body1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/about_engine_description"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/engineInfoTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/engineInfoRecyclerView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/engineInfoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/engineDescriptionTextView"
+                    app:layout_constraintBottom_toTopOf="@+id/engineInfoSeparator"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_about" />
+
+                <View
+                    android:id="@+id/engineInfoSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/engineInfoRecyclerView"
+                    app:layout_constraintBottom_toTopOf="@+id/attributionsInfoTextView"/>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/attributionsInfoTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="Attributions"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/engineInfoSeparator"
+                    app:layout_constraintBottom_toTopOf="@+id/attributionsInfoRecyclerView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attributionsInfoRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:layout_marginBottom="32dp"
+                    android:nestedScrollingEnabled="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/attributionsInfoTextView"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/item_about" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,403 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "c49e562e881510f69971b1d682e615f8",
+    "entities": [
+      {
+        "tableName": "character",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `tag` TEXT NOT NULL, `color` TEXT, PRIMARY KEY(`name`))",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tag",
+            "columnName": "tag",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "color",
+            "columnName": "color",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "name"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_character_name",
+            "unique": true,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_character_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "credit",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`order` INTEGER NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`order`))",
+        "fields": [
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "order"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_credit_order",
+            "unique": true,
+            "columnNames": [
+              "order"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_credit_order` ON `${TABLE_NAME}` (`order`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "message",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `scene` INTEGER, `character_name` TEXT, `sprite` TEXT, `order` INTEGER, `sound` TEXT, `fullscreen` INTEGER NOT NULL, `text` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "scene",
+            "columnName": "scene",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "characterName",
+            "columnName": "character_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "spriteName",
+            "columnName": "sprite",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sound",
+            "columnName": "sound",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "fullscreen",
+            "columnName": "fullscreen",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "text",
+            "columnName": "text",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_message_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_message_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_message_scene_order",
+            "unique": true,
+            "columnNames": [
+              "scene",
+              "order"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_message_scene_order` ON `${TABLE_NAME}` (`scene`, `order`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "member",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `order` INTEGER NOT NULL, `name` TEXT NOT NULL, `credit` INTEGER)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "credit",
+            "columnName": "credit",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_member_order_credit",
+            "unique": true,
+            "columnNames": [
+              "order",
+              "credit"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_member_order_credit` ON `${TABLE_NAME}` (`order`, `credit`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "plot",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`version` INTEGER NOT NULL, PRIMARY KEY(`version`))",
+        "fields": [
+          {
+            "fieldPath": "version",
+            "columnName": "version",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "version"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_plot_version",
+            "unique": true,
+            "columnNames": [
+              "version"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_plot_version` ON `${TABLE_NAME}` (`version`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "present",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`scene` INTEGER NOT NULL, `character` TEXT NOT NULL, `position` INTEGER NOT NULL, PRIMARY KEY(`scene`, `character`))",
+        "fields": [
+          {
+            "fieldPath": "scene",
+            "columnName": "scene",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "character",
+            "columnName": "character",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "position",
+            "columnName": "position",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "scene",
+            "character"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_present_scene_character",
+            "unique": true,
+            "columnNames": [
+              "scene",
+              "character"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_present_scene_character` ON `${TABLE_NAME}` (`scene`, `character`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "scene",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`order` INTEGER, `background` TEXT NOT NULL, `intro` TEXT, `outro` TEXT, `chapter` INTEGER NOT NULL, `name` TEXT, `music` TEXT, PRIMARY KEY(`order`))",
+        "fields": [
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "background",
+            "columnName": "background",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "intro",
+            "columnName": "intro",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "outro",
+            "columnName": "outro",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "chapter",
+            "columnName": "chapter",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "music",
+            "columnName": "music",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "order"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_scene_order",
+            "unique": true,
+            "columnNames": [
+              "order"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_scene_order` ON `${TABLE_NAME}` (`order`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "sprite",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `character` TEXT, `graphic` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "character",
+            "columnName": "character",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "graphic",
+            "columnName": "graphic",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_sprite_character_name",
+            "unique": true,
+            "columnNames": [
+              "character",
+              "name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_sprite_character_name` ON `${TABLE_NAME}` (`character`, `name`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c49e562e881510f69971b1d682e615f8')"
+    ]
+  }
+}

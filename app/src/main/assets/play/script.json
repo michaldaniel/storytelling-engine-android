@@ -1,0 +1,389 @@
+{
+  "version": 1,
+  "credit": [
+    {
+      "name": "Programming",
+      "member": [
+        "Michał Daniel",
+        "Telegram: @morningbird",
+        "Mail: contact@morningbird",
+        "morningbird.eu"
+      ]
+    },
+    {
+      "name": "Script",
+      "member": [
+        "Telegram: @morningbird",
+        "Michał Daniel",
+        "morningbird.eu",
+        "Mail: contact@morningbird"
+      ]
+    },
+    {
+      "name": "Special Thanks",
+      "member": [
+        "morningbird.eu",
+        "Mail: contact@morningbird",
+        "Michał Daniel",
+        "Telegram: @morningbird"
+      ]
+    }
+  ],
+  "character": [
+    {
+      "name": "terry",
+      "tag": "Terry",
+      "color": "#e59e2c",
+      "sprite": [
+        {
+          "name": "neutral",
+          "graphic": "sprites/ch_01_a.png"
+        },
+        {
+          "name": "happy",
+          "graphic": "sprites/ch_01_b.png"
+        },
+        {
+          "name": "surprised",
+          "graphic": "sprites/ch_01_c.png"
+        }
+      ]
+    },
+    {
+      "name": "janet",
+      "tag": "Janet",
+      "color": "#644a7e",
+      "sprite": [
+        {
+          "name": "neutral",
+          "graphic": "sprites/ch_02_a.png"
+        },
+        {
+          "name": "happy",
+          "graphic": "sprites/ch_02_b.png"
+        },
+        {
+          "name": "surprised",
+          "graphic": "sprites/ch_02_c.png"
+        }
+      ]
+    },
+    {
+      "name": "shadow_terry",
+      "tag": "???",
+      "color": "#3a3224",
+      "sprite": [
+        {
+          "name": "neutral",
+          "graphic": "sprites/ch_03_a.png"
+        }
+      ]
+    },
+    {
+      "name": "shadow_janet",
+      "tag": "???",
+      "color": "#362e3f",
+      "sprite": [
+        {
+          "name": "neutral",
+          "graphic": "sprites/ch_04_a.png"
+        }
+      ]
+    }
+  ],
+  "scene": [
+    {
+      "background": "backgrounds/bg_scene_01.jpg",
+      "intro": "sounds/intro_01.ogg",
+      "outro": "sounds/outro_01.ogg",
+      "music": "music/background_01.ogg",
+      "chapter": true,
+      "name": "Begining",
+      "present": {
+        "left": [
+          "terry"
+        ],
+        "right": [
+          "janet"
+        ]
+      },
+      "message": [
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "neutral"
+          },
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "sound": "sounds/effect_01.ogg",
+          "text": "Aliquam erat volutpat."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "text": "Fusce scelerisque mollis auctor. Maecenas quis elementum nisl, quis consequat odio. Phasellus tristique turpis ac luctus convallis. Donec sed purus et dui vestibulum suscipit."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "happy"
+          },
+          "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "neutral"
+          },
+          "sound": "sounds/effect_02.ogg",
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "text": "Donec accumsan ex id erat pellentesque."
+        },
+        {
+          "fullscreen": true,
+          "text": "Nullam ex lorem, pharetra vitae tellus sit amet, maximus dictum lorem. Phasellus eu aliquam quam. Praesent a hendrerit turpis. Nulla ut consequat null, non pellentesque nunc. In hac habitasse platea dictumst. Quisque porttitor dapibus arcu, mattis vulputate quam dignissim a. Nunc ultricies erat ultricies justo porta aliquet tristique nec metus."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "happy"
+          },
+          "text": "Nam nec iaculis diam."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "happy"
+          },
+          "text": "Quisque nec finibus ligula, vitae posuere tortor."
+        },
+        {
+          "character": {
+            "name": "shadow_terry"
+          },
+          "text": "Nullam ex lorem, pharetra vitae tellus sit amet, maximus dictum lorem."
+        },
+        {
+          "character": {
+            "name": "shadow_terry"
+          },
+          "text": "Class aptent taciti sociosqu."
+        }
+      ]
+    },
+    {
+      "background": "backgrounds/bg_scene_02.jpg",
+      "intro": "sounds/intro_02.ogg",
+      "outro": "sounds/outro_02.ogg",
+      "music": "music/background_02.ogg",
+      "chapter": true,
+      "present": {
+        "left": [
+          "shadow_terry",
+          "terry"
+        ],
+        "right": [
+          "shadow_janet",
+          "janet"
+        ]
+      },
+      "message": [
+        {
+          "character": {
+            "name": "shadow_terry",
+            "sprite": "neutral"
+          },
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "shadow_janet",
+            "sprite": "neutral"
+          },
+          "sound": "sounds/effect_01.ogg",
+          "text": "Aliquam erat volutpat."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "text": "Fusce scelerisque mollis auctor. Maecenas quis elementum nisl, quis consequat odio. Phasellus tristique turpis ac luctus convallis. Donec sed purus et dui vestibulum suscipit."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "happy"
+          },
+          "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "happy"
+          },
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "surprised"
+          },
+          "text": "Donec accumsan ex id erat pellentesque."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "surprised"
+          },
+          "text": "Nullam ex lorem, pharetra vitae tellus sit amet, maximus dictum lorem."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "surprised"
+          },
+          "text": "Nam nec iaculis diam."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "happy"
+          },
+          "text": "Quisque nec finibus ligula, vitae posuere tortor."
+        }
+      ]
+    },
+    {
+      "background": "backgrounds/bg_scene_03.jpg",
+      "message": [
+        {
+          "fullscreen": true,
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "fullscreen": true,
+          "text": "Aliquam erat volutpat."
+        },
+        {
+          "fullscreen": true,
+          "text": "Fusce scelerisque mollis auctor. Maecenas quis elementum nisl, quis consequat odio. Phasellus tristique turpis ac luctus convallis. Donec sed purus et dui vestibulum suscipit."
+        },
+        {
+          "fullscreen": true,
+          "sound": "sounds/effect_02.ogg",
+          "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+        },
+        {
+          "fullscreen": true,
+          "text": "Duis placerat, augue quis feugiat."
+        }
+      ]
+    },
+    {
+      "background": "backgrounds/bg_scene_01.jpg",
+      "music": "music/background_01.ogg",
+      "chapter": true,
+      "name": "End",
+      "present": {
+        "left": [
+          "terry", "shadow_terry"
+        ],
+        "right": [
+          "janet"
+        ]
+      },
+      "message": [
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "neutral"
+          },
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "surprised"
+          },
+          "sound": "sounds/effect_02.ogg",
+          "text": "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "text": "Aliquam erat volutpat."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "text": "Fusce scelerisque mollis auctor. Maecenas quis elementum nisl, quis consequat odio. Phasellus tristique turpis ac luctus convallis. Donec sed purus et dui vestibulum suscipit."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "neutral"
+          },
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "surprised"
+          },
+          "text": "Donec accumsan ex id erat pellentesque."
+        },
+        {
+          "fullscreen": true,
+          "text": "Nullam ex lorem, pharetra vitae tellus sit amet, maximus dictum lorem. Phasellus eu aliquam quam. Praesent a hendrerit turpis. Nulla ut consequat null, non pellentesque nunc. In hac habitasse platea dictumst. Quisque porttitor dapibus arcu, mattis vulputate quam dignissim a. Nunc ultricies erat ultricies justo porta aliquet tristique nec metus."
+        },
+        {
+          "character": {
+            "name": "shadow_terry",
+            "sprite": "neutral"
+          },
+          "text": "Duis placerat, augue quis feugiat."
+        },
+        {
+          "character": {
+            "name": "shadow_terry",
+            "sprite": "neutral"
+          },
+          "sound": "sounds/effect_01.ogg",
+          "text": "Aliquam erat volutpat."
+        },
+        {
+          "character": {
+            "name": "janet",
+            "sprite": "happy"
+          },
+          "text": "Nam nec iaculis diam."
+        },
+        {
+          "character": {
+            "name": "terry",
+            "sprite": "happy"
+          },
+          "text": "Quisque nec finibus ligula, vitae posuere tortor."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#2d3e2c</color>
+    <color name="colorPrimaryDark">#0a2013</color>
+    <color name="colorAccent">#324a3e</color>
+    <color name="colorMessageBackground">#E6FFFFFF</color>
+    <color name="colorMessageBorder">#FFFFFFFF</color>
+    <color name="colorCharacter">#D5D5D5</color>
+    <color name="colorFullscreenBackground">#D9000000</color>
+    <color name="colorFullscreenBorderBackground">#4D000000</color>
+    <color name="colorFullscreenAccent">#66FFFFFF</color>
+    <color name="colorStatusBar">#B2000000</color>
+    <color name="colorTextOnBlack">#e6FFFFFF</color>
+    <color name="colorTextOnWhite">#323232</color>
+    <color name="colorTextOnWhiteSecondary">#707070</color>
+    <color name="colorCardBackground">#CCFFFFFF</color>
+    <color name="colorCardAccent">#19000000</color>
+</resources>

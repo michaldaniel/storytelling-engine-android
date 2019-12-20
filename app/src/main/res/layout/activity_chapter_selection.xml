@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="eu.morningbird.storytellingengine.viewmodel.ChapterSelectionViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/black"
+        tools:context="eu.morningbird.storytellingengine.view.ChapterSelectionActivity">
+
+        <ImageView
+            android:id="@+id/titleScreenBackgroundImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_titlescreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="@dimen/logo_dimensions"
+            android:layout_height="@dimen/logo_dimensions"
+            android:layout_marginStart="@dimen/widgets_margin"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:layout_marginEnd="@dimen/widgets_margin"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="@dimen/logo_max_dimensions"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintWidth_max="@dimen/logo_max_dimensions"
+            tools:ignore="ContentDescription" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:background="@drawable/bg_activity_card"
+            android:elevation="@dimen/widgets_elevation"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="@dimen/widgets_wide_margin"
+            android:requiresFadingEdge="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="@dimen/widgets_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImageView"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/headerTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/title_chapters"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_title_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/headerSeparator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/headerSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerTextView" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/chaptersRecyclerView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:nestedScrollingEnabled="false"
+                    android:paddingBottom="@dimen/widgets_wide_margin"
+                    android:visibility="@{viewModel.isLoaded ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerSeparator"
+                    tools:itemCount="8"
+                    tools:listitem="@layout/item_chapter" />
+
+                <ProgressBar
+                    android:layout_width="@dimen/loading_spinner_size"
+                    android:layout_height="@dimen/loading_spinner_size"
+                    android:layout_marginStart="@dimen/title_buttons_horizontal_margin"
+                    android:layout_marginTop="@dimen/title_buttons_horizontal_margin"
+                    android:layout_marginEnd="@dimen/title_buttons_horizontal_margin"
+                    android:layout_marginBottom="@dimen/title_buttons_horizontal_margin"
+                    android:visibility="@{viewModel.isLoaded ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerSeparator" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

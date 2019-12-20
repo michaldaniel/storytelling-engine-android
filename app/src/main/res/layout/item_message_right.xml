@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:visibility="visible">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/messageBubbleShadowConstraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/message_margin"
+        android:layout_marginEnd="@dimen/message_margin"
+        android:background="@drawable/bg_bubble_shadow"
+        android:backgroundTint="@color/colorCharacter"
+        android:backgroundTintMode="src_atop"
+        android:maxWidth="@dimen/message_max_width"
+        android:minWidth="@dimen/message_min_width"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/message_border_start"
+        android:paddingTop="@dimen/message_border_top"
+        android:paddingEnd="@dimen/message_border_end"
+        android:paddingBottom="@dimen/message_border_bottom"
+        app:layout_constraintBottom_toTopOf="@+id/bubbleTriangleView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_max="@dimen/message_max_width"
+        app:layout_constraintWidth_min="@dimen/message_min_width">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/messageBubbleConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bubble"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <eu.morningbird.storytellingengine.view.TypeWriterTextView
+                android:id="@+id/messageTextView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/message_text_margin"
+                android:layout_marginTop="@dimen/message_text_margin"
+                android:layout_marginEnd="@dimen/message_text_margin"
+                android:layout_marginBottom="@dimen/message_text_bottom_margin"
+                android:fontFamily="@font/cmunss"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorTextOnWhite"
+                android:textSize="@dimen/message_text_base_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpUsage"
+                tools:text="Lorem! Lorem! Lorem! Lorem! Lorem! Lorem! Lorem! Lorem!" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/messageSpacingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/message_text_margin"
+                android:layout_marginTop="@dimen/message_text_margin"
+                android:layout_marginEnd="@dimen/message_text_margin"
+                android:layout_marginBottom="@dimen/message_text_bottom_margin"
+                android:fontFamily="@font/cmunss"
+                android:textSize="@dimen/message_text_base_size"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpUsage"
+                tools:text="Lorem! Lorem! Lorem! Lorem! Lorem! Lorem! Lorem! Lorem!" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/characterNameConstraintLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/character_badge_adjustment"
+        android:layout_marginTop="@dimen/message_top_space"
+        android:background="@drawable/bg_sender_name"
+        android:elevation="@dimen/character_badge_elevation"
+        android:translationY="@dimen/character_badge_translation"
+        app:layout_constraintBottom_toTopOf="@+id/messageBubbleShadowConstraintLayout"
+        app:layout_constraintStart_toStartOf="@+id/messageBubbleShadowConstraintLayout"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:backgroundTint="@color/colorCharacter"
+        tools:backgroundTintMode="src_atop"
+        tools:visibility="visible">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/characterNameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/character_badge_horizontal_margin"
+            android:layout_marginTop="@dimen/character_badge_vertical_margin"
+            android:layout_marginEnd="@dimen/character_badge_horizontal_margin"
+            android:layout_marginBottom="@dimen/character_badge_vertical_margin"
+            android:fontFamily="@font/cmunbsr"
+            android:text="@string/character_blank_name"
+            android:textColor="@color/colorTextOnBlack"
+            android:textSize="@dimen/character_badge_text_base_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpUsage"
+            tools:text="Lorem ipsum!" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/bubbleTriangleView"
+        android:layout_width="@dimen/bubble_triangle_width"
+        android:layout_height="@dimen/bubble_triangle_height"
+        android:layout_marginEnd="@dimen/bubble_triangle_adjustment"
+        android:background="@drawable/bg_bubble_bottom_right_arrow"
+        app:layout_constraintEnd_toEndOf="@+id/messageBubbleShadowConstraintLayout"
+        app:layout_constraintTop_toBottomOf="@+id/messageBubbleShadowConstraintLayout"
+        tools:backgroundTint="@color/colorCharacter"
+        tools:backgroundTintMode="src_atop"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

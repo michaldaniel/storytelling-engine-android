@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="eu.morningbird.storytellingengine.viewmodel.SettingsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/black"
+        tools:context="eu.morningbird.storytellingengine.view.SettingsActivity">
+
+        <ImageView
+            android:id="@+id/titleScreenBackgroundImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_titlescreen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/logoImageView"
+            android:layout_width="@dimen/logo_dimensions"
+            android:layout_height="@dimen/logo_dimensions"
+            android:layout_marginStart="@dimen/widgets_margin"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:layout_marginEnd="@dimen/widgets_margin"
+            android:adjustViewBounds="true"
+            android:src="@drawable/img_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_max="@dimen/logo_max_dimensions"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar"
+            app:layout_constraintWidth_max="@dimen/logo_max_dimensions"
+            tools:ignore="ContentDescription" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:background="@drawable/bg_activity_card"
+            android:elevation="@dimen/widgets_elevation"
+            android:fadingEdge="vertical"
+            android:fadingEdgeLength="@dimen/widgets_wide_margin"
+            android:requiresFadingEdge="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintCircleRadius="@dimen/widgets_margin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImageView"
+            app:layout_constraintVertical_bias="1.0">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/headerTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/title_settings"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_title_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/headerSeparator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/headerSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsSoundsTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsSoundsTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/sound"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsMusicTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/headerSeparator" />
+
+                <ImageView
+                    android:id="@+id/settingsMusicImageView"
+                    android:layout_width="@dimen/widgets_wide_margin"
+                    android:layout_height="@dimen/widgets_wide_margin"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.soundSettingsAlpha}"
+                    android:src="@drawable/ic_music"
+                    android:tint="@color/colorTextOnWhiteSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/settingsMusicIndicatorSeekBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settingsMusicTextView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsMusicTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.soundSettingsAlpha}"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/background_music_volume"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsMusicIndicatorSeekBar"
+                    app:layout_constraintStart_toEndOf="@+id/settingsMusicImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsSoundsTextView" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/settingsMusicIndicatorSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:layout_marginEnd="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.soundSettingsAlpha}"
+                    app:isb_indicator_color="@color/colorAccent"
+                    app:isb_indicator_text_color="@color/colorTextOnBlack"
+                    app:isb_max="100"
+                    app:isb_min="0"
+                    app:isb_seek_smoothly="true"
+                    app:isb_show_tick_marks_type="none"
+                    app:isb_show_tick_texts="true"
+                    app:isb_thumb_color="@color/colorAccent"
+                    app:isb_tick_marks_color="@color/colorAccent"
+                    app:isb_tick_texts_color="@color/colorTextOnWhiteSecondary"
+                    app:isb_ticks_count="2"
+                    app:isb_track_background_color="@color/colorCardAccent"
+                    app:isb_track_progress_color="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsEffectsTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsMusicImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsMusicTextView" />
+
+                <ImageView
+                    android:id="@+id/settingsEffectsImageView"
+                    android:layout_width="@dimen/widgets_wide_margin"
+                    android:layout_height="@dimen/widgets_wide_margin"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.soundSettingsAlpha}"
+                    android:src="@drawable/ic_sound_effect"
+                    android:tint="@color/colorTextOnWhiteSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/settingsEffectsIndicatorSeekBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settingsEffectsTextView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsEffectsTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.soundSettingsAlpha}"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/sound_effects_volume"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsEffectsIndicatorSeekBar"
+                    app:layout_constraintStart_toEndOf="@+id/settingsEffectsImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsMusicIndicatorSeekBar" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/settingsEffectsIndicatorSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:layout_marginEnd="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.soundSettingsAlpha}"
+                    app:isb_indicator_color="@color/colorAccent"
+                    app:isb_indicator_text_color="@color/colorTextOnBlack"
+                    app:isb_max="100"
+                    app:isb_min="0"
+                    app:isb_seek_smoothly="true"
+                    app:isb_show_tick_marks_type="none"
+                    app:isb_show_tick_texts="true"
+                    app:isb_thumb_color="@color/colorAccent"
+                    app:isb_tick_marks_color="@color/colorAccent"
+                    app:isb_tick_texts_color="@color/colorTextOnWhiteSecondary"
+                    app:isb_ticks_count="2"
+                    app:isb_track_background_color="@color/colorCardAccent"
+                    app:isb_track_progress_color="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsMuteTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsEffectsImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsEffectsTextView" />
+
+                <Switch
+                    android:id="@+id/settingsMuteSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsMuteTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsMuteTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsMuteTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_narrow_margin"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/mute_all_sounds"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsGameplaySeparator"
+                    app:layout_constraintStart_toEndOf="@+id/settingsMuteSwitch"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsEffectsIndicatorSeekBar" />
+
+                <View
+                    android:id="@+id/settingsGameplaySeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsGameplayTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsMuteTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsGameplayTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/gameplay"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsTextSpeedTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsGameplaySeparator" />
+
+                <ImageView
+                    android:id="@+id/settingsTextSpeedImageView"
+                    android:layout_width="@dimen/widgets_wide_margin"
+                    android:layout_height="@dimen/widgets_wide_margin"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:src="@drawable/ic_text_animation"
+                    android:tint="@color/colorTextOnWhiteSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/settingsTextSpeedIndicatorSeekBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settingsTextSpeedTextView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsTextSpeedTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/text_reveal_animation_speed"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsTextSpeedIndicatorSeekBar"
+                    app:layout_constraintStart_toEndOf="@+id/settingsTextSpeedImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsGameplayTextView" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/settingsTextSpeedIndicatorSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:layout_marginEnd="@dimen/widgets_margin"
+                    app:isb_indicator_color="@color/colorAccent"
+                    app:isb_indicator_text_color="@color/colorTextOnBlack"
+                    app:isb_max="100"
+                    app:isb_min="0"
+                    app:isb_seek_smoothly="true"
+                    app:isb_show_tick_marks_type="none"
+                    app:isb_show_tick_texts="true"
+                    app:isb_thumb_color="@color/colorAccent"
+                    app:isb_tick_marks_color="@color/colorAccent"
+                    app:isb_tick_texts_color="@color/colorTextOnWhiteSecondary"
+                    app:isb_ticks_count="2"
+                    app:isb_track_background_color="@color/colorCardAccent"
+                    app:isb_track_progress_color="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsAccessibilitySeparator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsTextSpeedImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsTextSpeedTextView" />
+
+                <View
+                    android:id="@+id/settingsAccessibilitySeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsAccessibilityTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsTextSpeedIndicatorSeekBar" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsAccessibilityTextView"
+                    style="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/accessibility"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsFontSizeTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsAccessibilitySeparator" />
+
+                <ImageView
+                    android:id="@+id/settingsFontSizeImageView"
+                    android:layout_width="@dimen/widgets_wide_margin"
+                    android:layout_height="@dimen/widgets_wide_margin"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:src="@drawable/ic_text_size"
+                    android:tint="@color/colorTextOnWhiteSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/settingsFontSizeIndicatorSeekBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settingsFontSizeTextView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsFontSizeTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/text_size"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsFontSizeIndicatorSeekBar"
+                    app:layout_constraintStart_toEndOf="@+id/settingsFontSizeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsAccessibilityTextView" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/settingsFontSizeIndicatorSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:layout_marginEnd="@dimen/widgets_margin"
+                    app:isb_indicator_color="@color/colorAccent"
+                    app:isb_indicator_text_color="@color/colorTextOnBlack"
+                    app:isb_max="5"
+                    app:isb_min="1"
+                    app:isb_seek_smoothly="false"
+                    app:isb_show_tick_marks_type="none"
+                    app:isb_show_tick_texts="true"
+                    app:isb_thumb_color="@color/colorAccent"
+                    app:isb_tick_marks_color="@color/colorAccent"
+                    app:isb_tick_texts_color="@color/colorTextOnWhiteSecondary"
+                    app:isb_ticks_count="5"
+                    app:isb_track_background_color="@color/colorCardAccent"
+                    app:isb_track_progress_color="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsScreenReaderTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsFontSizeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsFontSizeTextView" />
+
+                <Switch
+                    android:id="@+id/settingsScreenReaderSwitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsScreenReaderTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsScreenReaderTextView" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsScreenReaderTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_narrow_margin"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/screen_reader"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsScreenReaderVolumeTextView"
+                    app:layout_constraintStart_toEndOf="@+id/settingsScreenReaderSwitch"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsFontSizeIndicatorSeekBar" />
+
+                <ImageView
+                    android:id="@+id/settingsScreenReaderVolumeImageView"
+                    android:layout_width="@dimen/widgets_wide_margin"
+                    android:layout_height="@dimen/widgets_wide_margin"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.screenReaderSettingsAlpha}"
+                    android:src="@drawable/ic_voice"
+                    android:tint="@color/colorTextOnWhiteSecondary"
+                    app:layout_constraintBottom_toBottomOf="@+id/settingsScreenReaderVolumeIndicatorSeekBar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settingsScreenReaderVolumeTextView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsScreenReaderVolumeTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:alpha="@{viewModel.screenReaderSettingsAlpha}"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/screen_reader_volume"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_subtitle_text_size"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsScreenReaderVolumeIndicatorSeekBar"
+                    app:layout_constraintStart_toEndOf="@+id/settingsScreenReaderVolumeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsScreenReaderTextView" />
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/settingsScreenReaderVolumeIndicatorSeekBar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="@dimen/widgets_margin"
+                    android:layout_marginEnd="@dimen/widgets_margin"
+                    android:alpha="@{viewModel.screenReaderSettingsAlpha}"
+                    app:isb_indicator_color="@color/colorAccent"
+                    app:isb_indicator_text_color="@color/colorTextOnBlack"
+                    app:isb_max="100"
+                    app:isb_min="0"
+                    app:isb_seek_smoothly="true"
+                    app:isb_show_tick_marks_type="none"
+                    app:isb_show_tick_texts="true"
+                    app:isb_thumb_color="@color/colorAccent"
+                    app:isb_tick_marks_color="@color/colorAccent"
+                    app:isb_tick_texts_color="@color/colorTextOnWhiteSecondary"
+                    app:isb_ticks_count="2"
+                    app:isb_track_background_color="@color/colorCardAccent"
+                    app:isb_track_progress_color="@color/colorAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsLinksSeparator"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsScreenReaderVolumeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsScreenReaderVolumeTextView" />
+
+                <View
+                    android:id="@+id/settingsLinksSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:background="@color/colorCardAccent"
+                    app:layout_constraintBottom_toTopOf="@+id/settingsAboutImageView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsScreenReaderVolumeIndicatorSeekBar" />
+
+                <ImageView
+                    android:id="@+id/settingsAboutImageView"
+                    android:layout_width="@dimen/widgets_wide_margin"
+                    android:layout_height="@dimen/widgets_wide_margin"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:src="@drawable/ic_about"
+                    android:tint="@color/colorTextOnWhite"
+                    app:layout_constraintBottom_toBottomOf="@+id/settingsAboutTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/settingsAboutTextView"
+                    tools:ignore="ContentDescription" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/settingsAboutTextView"
+                    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/widgets_margin"
+                    android:layout_marginTop="@dimen/widgets_wide_margin"
+                    android:layout_marginBottom="@dimen/widgets_wide_margin"
+                    android:fontFamily="@font/cmunbsr"
+                    android:text="@string/about_and_support"
+                    android:textColor="@color/colorTextOnWhite"
+                    android:textSize="@dimen/activity_call_to_action_text_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/settingsFontSizeImageView"
+                    app:layout_constraintTop_toBottomOf="@+id/settingsLinksSeparator" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

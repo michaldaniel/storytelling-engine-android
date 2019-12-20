@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="eu.morningbird.storytellingengine.viewmodel.TitleScreenViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/black"
+        tools:context="eu.morningbird.storytellingengine.view.TitleScreenActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/titleScreenConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/titleScreenBackgroundImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/bg_titlescreen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/logoImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="@dimen/logo_horizontal_margin"
+                android:layout_marginTop="@dimen/widgets_margin"
+                android:layout_marginEnd="@dimen/logo_horizontal_margin"
+                android:layout_marginBottom="@dimen/widgets_margin"
+                android:adjustViewBounds="true"
+                android:src="@drawable/img_logo"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_max="@dimen/logo_max_dimensions"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/titleScreenBackgroundImageView"
+                app:layout_constraintWidth_max="@dimen/logo_max_dimensions"
+                tools:ignore="ContentDescription" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/titleExtrasMenuConstraintLayout"
+                android:layout_width="@dimen/extras_width"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView"
+                app:layout_constraintEnd_toStartOf="@+id/logoImageView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/titleScreenBackgroundImageView"
+                app:layout_constraintVertical_bias="0.2">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/extrasShareConstraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/widgets_narrow_margin"
+                    android:layout_marginBottom="@dimen/extras_internal_margin"
+                    android:background="@drawable/bg_left_side_extra"
+                    android:onClick="@{viewModel::extrasShareOnClick}"
+                    app:layout_constraintBottom_toTopOf="@+id/extrasMoreConstraintLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/extrasShareTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/widgets_narrow_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/extras_internal_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:fontFamily="@font/cmunbsr"
+                        android:text="@string/share"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTextOnWhite"
+                        android:textSize="@dimen/extras_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/extrasShareImageView"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="SpUsage" />
+
+                    <ImageView
+                        android:id="@+id/extrasShareImageView"
+                        android:layout_width="@dimen/extras_text_size"
+                        android:layout_height="@dimen/extras_text_size"
+                        android:layout_marginStart="@dimen/extras_internal_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/widgets_narrow_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:src="@drawable/ic_share"
+                        android:tint="@color/colorTextOnWhite"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toEndOf="@+id/extrasShareTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/extrasMoreConstraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/extras_internal_margin"
+                    android:layout_marginBottom="@dimen/extras_internal_margin"
+                    android:background="@drawable/bg_left_side_extra"
+                    android:onClick="@{viewModel::extrasMoreOnClick}"
+                    app:layout_constraintBottom_toTopOf="@+id/extrasRateConstraintLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/extrasShareConstraintLayout">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/extrasMoreTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/widgets_narrow_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/extras_internal_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:fontFamily="@font/cmunbsr"
+                        android:text="@string/more"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTextOnWhite"
+                        android:textSize="@dimen/extras_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/extrasMoreImageView"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="SpUsage" />
+
+                    <ImageView
+                        android:id="@+id/extrasMoreImageView"
+                        android:layout_width="@dimen/extras_text_size"
+                        android:layout_height="@dimen/extras_text_size"
+                        android:layout_marginStart="@dimen/extras_internal_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/widgets_narrow_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:src="@drawable/ic_playstore"
+                        android:tint="@color/colorTextOnWhite"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toEndOf="@+id/extrasMoreTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/extrasRateConstraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/extras_internal_margin"
+                    android:layout_marginBottom="@dimen/extras_internal_margin"
+                    android:background="@drawable/bg_left_side_extra"
+                    android:onClick="@{viewModel::extrasRateOnClick}"
+                    app:layout_constraintBottom_toTopOf="@+id/extrasAboutConstraintLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/extrasMoreConstraintLayout">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/extrasRateTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/widgets_narrow_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/extras_internal_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:fontFamily="@font/cmunbsr"
+                        android:text="@string/rate"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTextOnWhite"
+                        android:textSize="@dimen/extras_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/extrasRateImageView"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="SpUsage" />
+
+                    <ImageView
+                        android:id="@+id/extrasRateImageView"
+                        android:layout_width="@dimen/extras_text_size"
+                        android:layout_height="@dimen/extras_text_size"
+                        android:layout_marginStart="@dimen/extras_internal_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/widgets_narrow_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:src="@drawable/ic_star"
+                        android:tint="@color/colorTextOnWhite"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toEndOf="@+id/extrasRateTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/extrasAboutConstraintLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/extras_internal_margin"
+                    android:layout_marginBottom="@dimen/extras_internal_margin"
+                    android:background="@drawable/bg_left_side_extra"
+                    android:onClick="@{viewModel::extrasAboutOnClick}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/extrasRateConstraintLayout">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/extrasAboutTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/widgets_narrow_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/extras_internal_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:fontFamily="@font/cmunbsr"
+                        android:text="@string/about"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorTextOnWhite"
+                        android:textSize="@dimen/extras_text_size"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/extrasAboutImageView"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="SpUsage" />
+
+                    <ImageView
+                        android:id="@+id/extrasAboutImageView"
+                        android:layout_width="@dimen/extras_text_size"
+                        android:layout_height="@dimen/extras_text_size"
+                        android:layout_marginStart="@dimen/extras_internal_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/widgets_narrow_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:src="@drawable/ic_about"
+                        android:tint="@color/colorTextOnWhite"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_chainStyle="spread_inside"
+                        app:layout_constraintStart_toEndOf="@+id/extrasAboutTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="ContentDescription" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/scrollView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/widgets_margin"
+                android:layout_marginTop="@dimen/widgets_margin"
+                android:layout_marginEnd="@dimen/widgets_margin"
+                android:layout_marginBottom="@dimen/widgets_margin"
+                app:cardBackgroundColor="@color/colorCardBackground"
+                app:cardCornerRadius="@dimen/card_corner_radius"
+                app:cardElevation="@dimen/widgets_elevation"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logoImageView">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ProgressBar
+                        android:layout_width="@dimen/loading_spinner_size"
+                        android:layout_height="@dimen/loading_spinner_size"
+                        android:layout_marginStart="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginTop="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginEnd="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginBottom="@dimen/title_buttons_horizontal_margin"
+                        android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/startButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginTop="@dimen/title_buttons_vertical_margin"
+                        android:layout_marginEnd="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:backgroundTint="@color/colorAccent"
+                        android:fontFamily="@font/cmunbsr"
+                        android:onClick="@{viewModel::startButtonOnClick}"
+                        android:text="@{viewModel.startButtonTextLabel}"
+                        android:textColor="@color/colorTextOnBlack"
+                        android:textSize="@dimen/title_buttons_text_size"
+                        android:visibility="@{viewModel.isLoading ? View.INVISIBLE : View.VISIBLE}"
+                        app:cornerRadius="@dimen/title_buttons_corner_radius"
+                        app:icon="@drawable/ic_play"
+                        app:iconGravity="start"
+                        app:iconSize="@dimen/title_buttons_text_size"
+                        app:iconTint="@color/colorTextOnBlack"
+                        app:layout_constraintBottom_toTopOf="@+id/chaptersButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_min="@dimen/title_buttons_min_width"
+                        tools:ignore="SpUsage"
+                        tools:text="@string/title_new_game" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/chaptersButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginBottom="@dimen/extras_internal_margin"
+                        android:backgroundTint="@color/colorTextOnWhite"
+                        android:fontFamily="@font/cmunbsr"
+                        android:onClick="@{viewModel::chaptersButtonOnClick}"
+                        android:text="@string/title_chapters"
+                        android:textColor="@color/colorTextOnBlack"
+                        android:textSize="@dimen/title_buttons_text_size"
+                        android:visibility="@{viewModel.isLoading ? View.INVISIBLE : View.VISIBLE}"
+                        app:cornerRadius="@dimen/title_buttons_corner_radius"
+                        app:icon="@drawable/ic_book"
+                        app:iconGravity="start"
+                        app:iconSize="@dimen/title_buttons_text_size"
+                        app:iconTint="@color/colorTextOnBlack"
+                        app:layout_constraintBottom_toTopOf="@+id/settingsButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/startButton"
+                        app:layout_constraintWidth_min="@dimen/title_buttons_min_width"
+                        tools:ignore="SpUsage" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/settingsButton"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginTop="@dimen/extras_internal_margin"
+                        android:layout_marginEnd="@dimen/title_buttons_horizontal_margin"
+                        android:layout_marginBottom="@dimen/title_buttons_vertical_margin"
+                        android:backgroundTint="@color/colorTextOnWhite"
+                        android:fontFamily="@font/cmunbsr"
+                        android:onClick="@{viewModel::settingsButtonOnClick}"
+                        android:text="@string/title_settings"
+                        android:textColor="@color/colorTextOnBlack"
+                        android:textSize="@dimen/title_buttons_text_size"
+                        android:visibility="@{viewModel.isLoading ? View.INVISIBLE : View.VISIBLE}"
+                        app:cornerRadius="@dimen/title_buttons_corner_radius"
+                        app:icon="@drawable/ic_settings"
+                        app:iconGravity="start"
+                        app:iconSize="@dimen/title_buttons_text_size"
+                        app:iconTint="@color/colorTextOnBlack"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chaptersButton"
+                        app:layout_constraintWidth_min="@dimen/title_buttons_min_width"
+                        tools:ignore="SpUsage" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

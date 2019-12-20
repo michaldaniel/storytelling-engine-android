@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="message_overlap">72</integer>
+    <integer name="speaker_adjustment">96</integer>
+    <integer name="continue_pulse_frequency">1000</integer>
+</resources>

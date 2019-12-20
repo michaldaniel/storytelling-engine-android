@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chapterItemCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/widgets_margin"
+    android:layout_marginTop="@dimen/widgets_narrow_margin"
+    android:layout_marginEnd="@dimen/widgets_margin"
+    android:layout_marginBottom="@dimen/widgets_narrow_margin"
+    android:background="@android:color/white"
+    app:cardElevation="@dimen/widgets_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/chapterItemIconImageView"
+            android:layout_width="@dimen/activity_subtitle_text_size"
+            android:layout_height="@dimen/activity_subtitle_text_size"
+            android:layout_marginTop="@dimen/widgets_margin"
+            android:layout_marginEnd="@dimen/widgets_margin"
+            android:layout_marginBottom="@dimen/widgets_margin"
+            android:src="@drawable/ic_play"
+            android:tint="@color/colorTextOnWhiteSecondary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <View
+            android:id="@+id/chapterItemSeperatorView"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/widgets_margin"
+            android:background="@color/colorCardAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/chapterItemIconImageView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/chapterItemNumberTextView"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/widgets_margin"
+            android:layout_marginTop="@dimen/extras_internal_margin"
+            android:fontFamily="@font/cmunbsr"
+            android:textColor="@color/colorTextOnWhite"
+            android:textSize="@dimen/activity_subtitle_text_size"
+            app:layout_constraintBottom_toTopOf="@+id/chapterItemNameTextView"
+            app:layout_constraintEnd_toStartOf="@+id/chapterItemSeperatorView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Chapter I" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/chapterItemNameTextView"
+            style="@style/TextAppearance.MaterialComponents.Subtitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/widgets_margin"
+            android:layout_marginBottom="@dimen/extras_internal_margin"
+            android:fontFamily="@font/cmunbsr"
+            android:text="@string/background_music_volume"
+            android:textColor="@color/colorTextOnWhiteSecondary"
+            android:textSize="@dimen/activity_subtitle_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/chapterItemSeperatorView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chapterItemNumberTextView"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Everything begins here" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

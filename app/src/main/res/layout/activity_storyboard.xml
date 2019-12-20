@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="eu.morningbird.storytellingengine.viewmodel.StoryboardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/storyboardConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@android:color/black"
+        tools:context="eu.morningbird.storytellingengine.view.StoryboardActivity">
+
+        <ImageView
+            android:id="@+id/sceneBackgroundImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/tools_background" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/chatConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatRecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:divider="@null"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                app:reverseLayout="false"
+                app:stackFromEnd="true"
+                tools:itemCount="3"
+                tools:listitem="@layout/item_message_right" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.4" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/charactersConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/verticalGuideline"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_constraintGuide_percent="0.5" />
+
+            <ImageView
+                android:id="@+id/leftCharacterImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/verticalGuideline"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/tools_img_character" />
+
+            <ImageView
+                android:id="@+id/rightCharacterImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:scaleX="-1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/verticalGuideline"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/tools_img_character" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fullscreenMessageConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <ImageView
+                android:id="@+id/fullsceenBorderTopImageView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/fullscreen_message_shadow_height"
+                android:src="@drawable/bg_fullscreen_border_top"
+                app:layout_constraintBottom_toTopOf="@+id/fullscreenTextConstraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/fullscreenTextConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorFullscreenBackground"
+                android:minHeight="@dimen/fullscreen_message_min_height"
+                app:layout_constraintBottom_toTopOf="@+id/fullsceenBorderBottomImageView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fullsceenBorderTopImageView">
+
+                <eu.morningbird.storytellingengine.view.TypeWriterTextView
+                    android:id="@+id/fullscreenTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/fullscreen_message_horizontal_margin"
+                    android:layout_marginTop="@dimen/fullscreen_message_vertical_margin"
+                    android:layout_marginEnd="@dimen/fullscreen_message_horizontal_margin"
+                    android:layout_marginBottom="@dimen/fullscreen_message_vertical_margin"
+                    android:fontFamily="@font/cmunrm"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingMultiplier="1.05"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorTextOnBlack"
+                    android:textSize="@dimen/fullscreen_message_text_base_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpUsage"
+                    tools:text="Lorem ipsum dolor sit amet, isi ut aliquip ex ea commodo consequat." />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/fullscreenSpacingTextView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/fullscreen_message_horizontal_margin"
+                    android:layout_marginTop="@dimen/fullscreen_message_vertical_margin"
+                    android:layout_marginEnd="@dimen/fullscreen_message_horizontal_margin"
+                    android:layout_marginBottom="@dimen/fullscreen_message_vertical_margin"
+                    android:fontFamily="@font/cmunrm"
+                    android:letterSpacing="0.03"
+                    android:lineSpacingMultiplier="1.05"
+                    android:textSize="@dimen/fullscreen_message_text_base_size"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="SpUsage"
+                    tools:text="Lorem ipsum dolor sit amet, isi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, isi ut aliquip ex ea commodo consequat." />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/fullsceenBorderBottomImageView"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/fullscreen_message_shadow_height"
+                android:src="@drawable/bg_fullscreen_border_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fullscreenTextConstraintLayout"
+                tools:ignore="ContentDescription" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/continueImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/widgets_margin"
+            android:layout_marginBottom="@dimen/widgets_margin"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_forward_arrow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/savingIndicatorConstraintLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/widgets_margin"
+            android:layout_marginBottom="@dimen/widgets_margin"
+            android:background="@drawable/bg_black_card"
+            android:visibility="@{viewModel.savingIndicatorVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ProgressBar
+                android:id="@+id/savingIndicatorProgressBar"
+                android:layout_width="@dimen/activity_subtitle_text_size"
+                android:layout_height="@dimen/activity_subtitle_text_size"
+                android:layout_marginStart="@dimen/widgets_margin"
+                android:layout_marginTop="@dimen/widgets_narrow_margin"
+                android:layout_marginBottom="@dimen/widgets_narrow_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/savingIndicatorTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/savingIndicatorTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/widgets_narrow_margin"
+                android:layout_marginTop="@dimen/widgets_narrow_margin"
+                android:layout_marginEnd="@dimen/widgets_margin"
+                android:layout_marginBottom="@dimen/widgets_narrow_margin"
+                android:fontFamily="@font/cmunbsr"
+                android:text="@string/saving"
+                android:textColor="@color/colorTextOnBlack"
+                android:textSize="@dimen/activity_subtitle_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/savingIndicatorProgressBar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

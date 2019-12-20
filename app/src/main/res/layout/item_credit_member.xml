@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textview.MaterialTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/creditsTextView"
+    style="@style/TextAppearance.MaterialComponents.Subtitle1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/widgets_margin"
+    android:layout_marginBottom="@dimen/widgets_narrow_margin"
+    android:fontFamily="@font/cmunbsr"
+    android:textColor="@color/colorTextOnWhite"
+    android:textSize="@dimen/activity_subtitle_text_size"
+    app:layout_constraintBottom_toTopOf="@+id/settingsMusicTextView"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/headerSeparator"
+    tools:text="Credits Member" />
