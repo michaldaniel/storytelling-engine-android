@@ -15,4 +15,5 @@
     <color name="colorTextOnWhiteSecondary">#707070</color>
     <color name="colorCardBackground">#CCFFFFFF</color>
     <color name="colorCardAccent">#19000000</color>
+    <color name="colorLauncherBackround">#FFFFFFFF</color>
 </resources>
