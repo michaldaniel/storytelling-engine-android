@@ -164,7 +164,7 @@ Email me or contact directly if you have any questions, suggestions or general f
 * Telegram: [@morningbird](https://telegram.me/morningbird)
 * Other: [Github](https://github.com/michaldaniel), [Linkedin](https://www.linkedin.com/in/michalpiotrdaniel)
 
-### Planned improvments
+### Planned improvements
 
 * [ ] Refactoring version and breakage tracking
 * [ ] Split JSON into smaller files for quick parsing in Chapters and Credits sceen.
