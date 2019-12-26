@@ -166,7 +166,8 @@ Email me or contact directly if you have any questions, suggestions or general f
 
 ### Planned improvements
 
-* [ ] Refactoring version and breakage tracking
+* [ ] Better version and breakage tracking
+* [ ] Ritch message text styling
 * [ ] Split JSON into smaller files for quick parsing in Chapters and Credits sceen.
 * [ ] Parametrisize everything in JSON files and/or single Settings file.
 * [ ] Chain scenes together using identifiers.
