@@ -8,7 +8,7 @@
 
 Storyteling Engine is a native, easy to edit, base Android application for creating character driven kinetic novels.
         
-The application adapts to the script in the JSON file where you can easily define characters, scenes and used sound effects. Other changes can be made by editing selected configuration files and images in the resources and assets directories. The entire application is open source and can be adapated to suite your project.
+The application adapts to the script in the JSON file where you can easily define characters, scenes and used sound effects. Other changes can be made by editing selected configuration files and images in the resources and assets directories. The entire application is open source and can be adapted to suite your project.
 
 The available demo application shows all current capabilities of the "engine" - it is an example of what it can be used for and a helpful starting point for editing.
 

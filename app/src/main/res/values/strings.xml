@@ -40,7 +40,10 @@
     <string name="dialogs_credits_finished_review">Review on Play Store</string>
     <string name="dialogs_credits_finished_more">More games like this</string>
     <string name="dialogs_credits_finished_exit">Exit to the main menu</string>
-    <string name="about_description">Lorem ipsum dolor sit amet consectetur adipiscing, elit lobortis nisi lectus porttitor ornare, litora quam dignissim duis suspendisse. Pharetra facilisi commodo netus bibendum sollicitudin faucibus ut interdum nunc penatibus dapibus pretium, sem tincidunt neque donec euismod ridiculus varius est dis eros laoreet id.</string>
+    <string name="about_description">
+        Storytelling Engine is a native, easy to edit, base Android application for creating character driven kinetic novels. This is demo application showcasing all current capabilities of the "engine" - it is an example of what it can be used for and a helpful starting point for editing.
+        \n\nThe entire application is open source and can be adapted to suite your project.
+    </string>
     <string name="about_version">Version %s</string>
     <string name="about_website">Website</string>
     <string name="about_google_play_store">Google Play Store</string>
