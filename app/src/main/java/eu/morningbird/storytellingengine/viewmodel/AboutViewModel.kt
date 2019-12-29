@@ -31,7 +31,7 @@ class AboutViewModel : ViewModel() {
 
     init {
         val gameInfoAboutItems: MutableList<AboutItem> = ArrayList()
-        gameInfoAboutItems.add(AboutItem(R.string.about_website, icon = R.drawable.ic_url, url = "https://www.morningbird.eu"))
+        gameInfoAboutItems.add(AboutItem(R.string.about_website, icon = R.drawable.ic_url, url = "https://morningbird.eu/app/storytellingengine/"))
         gameInfoAboutItems.add(AboutItem(R.string.about_google_play_store, icon = R.drawable.ic_playstore, onClickListener = View.OnClickListener { view ->
             PlayStoreActions(view.context).openRate()
         }))
@@ -82,7 +82,7 @@ class AboutViewModel : ViewModel() {
         this.developerInfoAboutItems.postValue(developerInfoAboutItems)
 
         val supportInfoAboutItems: MutableList<AboutItem> = ArrayList()
-        supportInfoAboutItems.add(AboutItem(R.string.about_bug_reports, icon = R.drawable.ic_bug, url = "https://github.com"))
+        supportInfoAboutItems.add(AboutItem(R.string.about_bug_reports, icon = R.drawable.ic_bug, url = "https://github.com/michaldaniel/storytelling-engine-android/issues/new"))
         supportInfoAboutItems.add(AboutItem(R.string.about_email, icon = R.drawable.ic_mail, onClickListener = View.OnClickListener { view ->
             val intentMail = Intent(Intent.ACTION_SEND)
             intentMail.type = "message/rfc822"
@@ -111,13 +111,13 @@ class AboutViewModel : ViewModel() {
         this.supportInfoAboutItems.postValue(supportInfoAboutItems)
 
         val legalInfoAboutItems: MutableList<AboutItem> = ArrayList()
-        legalInfoAboutItems.add(AboutItem(R.string.about_privacy_policy, icon = R.drawable.ic_privacy, url = "https://morningbird.eu"))
+        legalInfoAboutItems.add(AboutItem(R.string.about_privacy_policy, icon = R.drawable.ic_privacy, url = "https://morningbird.eu/app/storytellingengine/privacy/"))
         legalInfoAboutItems.add(AboutItem("Copyright 2020: Michał Daniel", icon = R.drawable.ic_copyright))
         this.legalInfoAboutItems.postValue(legalInfoAboutItems)
 
         val engineInfoAboutItems: MutableList<AboutItem> = ArrayList()
-        engineInfoAboutItems.add(AboutItem(R.string.about_source_code, icon = R.drawable.ic_source, url = "https://github.com"))
-        engineInfoAboutItems.add(AboutItem(R.string.about_bug_reports, icon = R.drawable.ic_bug, url = "https://github.com"))
+        engineInfoAboutItems.add(AboutItem(R.string.about_source_code, icon = R.drawable.ic_source, url = "https://github.com/michaldaniel/storytelling-engine-android"))
+        engineInfoAboutItems.add(AboutItem(R.string.about_bug_reports, icon = R.drawable.ic_bug, url = "https://github.com/michaldaniel/storytelling-engine-android/issues/new"))
         engineInfoAboutItems.add(AboutItem(R.string.about_license, icon = R.drawable.ic_document))
         this.engineInfoAboutItems.postValue(engineInfoAboutItems)
 
